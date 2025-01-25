@@ -1,5 +1,6 @@
 import dash
 from dash import dcc, html, Input, Output, State
+import dash_bootstrap_components as dbc
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
@@ -73,10 +74,169 @@ The dataset leveraged for this project comprised 15,000 records, including predi
 Multiple regression models were implemented and evaluated, including XGBoost, Extra Trees, Multi-layer Perceptron (MLP), Random Forest, Gradient Boosting, K-Nearest Neighbors (KNN), Linear, Lasso, Ridge, SVM, ElasticNet, Decision Tree, Huber, and Bayesian Ridge, to identify the optimal approach. The best model identified was {best_model}, with a MAE of {best_model_results['MAE']:.3f}, R² of {best_model_results['R²']:.3f}, MSE of {best_model_results['MSE']:.3f}, and RMSE of {best_model_results['RMSE']:.3f}.
 """
 
-# Code Snippet
-code_snippet = """
+
+# Initialize Dash App
+app = dash.Dash(__name__)
+server = app.server # Required for Heroku deployment
+
+# Layout
+app.layout = dbc.Container(
+     [
+          dbc.Card([
+               html.Div([
+                    html.H1(
+                         "Calories Burned Prediction Dashboard", 
+                         style={'color': '#4CAF50', 'textAlign': 'center',}
+                    ),
+                    
+                    html.Div(
+                         [
+                              html.P(
+                                   "This dashboard provides insights into the prediction of calories burned during physical activities based on user data and exercise metrics.",
+                                   className="text-center text-muted",
+                                   style={'fontSize': '28px', 'textAlign': 'center'}
+                              )
+                         ],
+                         className="hero-section",
+                    ),
+                    # Buttons Container
+                    html.Div([
+                         dbc.Button(
+                              "View/Hide Summary",
+                              id="summary-button",
+                              className="btn",
+                              style={'backgroundColor': '#1E90FF', 'color': 'white', 'border': 'none', 'padding': '10px 20px', 'fontSize': '16px', 'cursor': 'pointer', 'margin-right': '10px'}
+                         ),
+                         
+                         dbc.Button(
+                              "View/Hide Code Snippet",
+                              id="code-button",
+                              className="btn",
+                              style={'backgroundColor': '#1E90FF', 'color': 'white', 'border': 'none', 'padding': '10px 20px', 'fontSize': '16px', 'cursor': 'pointer'}
+                         ),
+                         # Summary and Code Containers
+                    ], style={'justifyContent': 'center', 'display': 'flex', 'marginBottom': '20px'}),
+                    
+                    html.Div(id='summary-container', className="shadow p-3 mb-5 bg-white rounded", style={'display': 'none', 'border': '1px solid #ddd', 'padding': '10px20px', 'borderRadius': '5px'}),
+                    html.Div(id='code-container', className="shadow p-3 mb-5 bg-white rounded", style={'display': 'none'}),
+                    
+                    # Metrics Display
+                    dbc.Row([
+                         dbc.Col([
+                              html.Div(
+                                   [
+                                        html.H3("Model Performance Metrics", style={'textAlign': 'center', 'marginBottom': '20px'}),
+                                        html.Div([html.H3("Mean Absolute Error"), html.P(f"{best_model_results['MAE']:.2f}")], style={'margin': '20px'}),
+                                        html.Div([html.H3("R-Squared Score"), html.P(f"{best_model_results['R²']:.2f}")], style={'margin': '20px'}),
+                                        html.Div([html.H3("Mean Squared Error"), html.P(f"{best_model_results['MSE']:.2f}")], style={'margin': '20px'}),
+                                        html.Div([html.H3("Root Mean Squared Error"), html.P(f"{best_model_results['RMSE']:.2f}")], style={'margin': '20px'}),
+                                   ], 
+                                   style={'display': 'flex', 'justifyContent': 'center'}
+                              ),
+                         ], xs=12, sm=12, md=6, lg=6, xl=6),     
+                    ]),
+
+                    # Graphs
+                    dbc.Row([
+                         dbc.Col([
+                              html.H3("Correlation Heatmap"),
+                              dcc.Graph(id='heatmap', figure=heatmap_fig),
+                         ], xs=12, sm=12, md=6, lg=6, xl=6), 
+                         
+                         dbc.Col([
+                              html.H3("Age Distribution Graphs"),
+                              dcc.Graph(id='age-dist', figure=age_fig),
+                         ], xs=12, sm=12, md=6, lg=6, xl=6),    
+                    ]),
+                    
+                    dbc.Row([
+                         dbc.Col([
+                              html.H3("Height Distribution"),
+                              dcc.Graph(id='height-dist', figure=height_fig),
+                         ], xs=12, sm=12, md=6, lg=6, xl=6),  
+                         
+                         dbc.Col([
+                              html.H3("Weight Distribution"),
+                              dcc.Graph(id='weight-dist', figure=weight_fig),
+                         ], xs=12, sm=12, md=6, lg=6, xl=6),   
+                    ]),
+                    
+                    # Predictions
+                    html.Div([
+                         html.H3("Prediction Test Results"),
+                         dcc.Graph(
+                              id='prediction-scatter',
+                              figure=go.Figure(
+                                   data=[
+                                        go.Scatter(
+                                             x=Y_test,
+                                             y=best_model_predictions,
+                                             mode='markers',
+                                             marker=dict(color='blue', size=5),
+                                             name='Predicted vs Actual'
+                                        )
+                                   ]
+                              ).update_layout(
+                                   title="Predicted vs Actual Calories", 
+                                   xaxis_title="Actual", 
+                                   yaxis_title="Predicted"
+                              )
+                         ), 
+                    ]),   
+                    
+                    # Footer
+                    html.Footer([
+                         html.P([
+                              "Check out my ",
+                              html.A("Portfolio", href="https://ose-ambrosioo.github.io", target="_blank"),
+                              " and connect with me on ",
+                              html.A("LinkedIn", href="https://www.linkedin.com/in/jose-ambrosio/", target="_blank"),
+                              "."
+                         ], style={'textAlign': 'center', 'padding': '10px', 'background-color': '#f9f9f9', 'borderTop': '1px solid #ddd'})
+                    ])        
+               ])   
+          ])
+     ], 
+     fluid=True
+)
+
+# Callback to show/hide summary
+@app.callback(
+    [Output("summary-container", "children"), Output("summary-container", "style"), Output("summary-button", "children")],
+    Input("summary-button", "n_clicks"),
+    State("summary-button", "children"),
+    prevent_initial_call=True
+)
+def update_summary(n_clicks, button_text):
+    if button_text == "View/Hide Summary":
+        style = {"display": "block"}
+        button_text = "Hide Summary"
+        content = html.Div(dcc.Markdown(project_summary, style={"white-space": "pre-wrap", "word-wrap": "break-word"}))
+    else:
+        style = {"display": "none"}
+        button_text = "View/Hide Summary"
+        content = ""
+    return content, style, button_text
+
+
+
+# Callback to show/hide code snippet
+@app.callback(
+    [Output("code-container", "children"), Output("code-container", "style"), Output("code-button", "children")],
+    Input("code-button", "n_clicks"),
+    State("code-button", "children"),
+    prevent_initial_call=True
+)
+def update_code(n_clicks, button_text):
+    if button_text == "View/Hide Code Snippet":
+        style = {"display": "block"}
+        button_text = "Hide Code Snippet"
+        content = html.Div([
+            html.H3("Code Snippet"),
+            dcc.Markdown(f"""              
+```python
 # Train and evaluate multiple models
-models = {
+models = {{
     "XGBoost": XGBRegressor(),
     "Random Forest": RandomForestRegressor(),
     "Gradient Boosting": GradientBoostingRegressor(),
@@ -88,9 +248,9 @@ models = {
     "Decision Tree": DecisionTreeRegressor(),
     "Support Vector Regressor": SVR(),
     "Multi-layer Perceptron": MLPRegressor()
-}
+}}
 
-results = {}
+results = {{}}
 
 for name, model in models.items():
     model.fit(X_train, Y_train)
@@ -99,13 +259,19 @@ for name, model in models.items():
     r2 = r2_score(Y_test, predictions)
     mse = mean_squared_error(Y_test, predictions)
     rmse = mse ** 0.5
-    results[name] = {"MAE": mae, "R²": r2, "MSE": mse, "RMSE": rmse}
+    results[name] = {{"MAE": mae, "R²": r2, "MSE": mse, "RMSE": rmse}}
 
 # Select the best model based on MAE
 best_model = min(results, key=lambda k: results[k]['MAE'])
 best_model_results = results[best_model]
 best_model_predictions = models[best_model].predict(X_test)
-"""
+```""", style={"white-space": "pre-wrap", "word-wrap": "break-word"}), html.H3("Explanation"), html.P(code_explanation)])
+    else:
+        style = {"display": "none"}
+        button_text = "View/Hide Code Snippet"
+        content = ""
+    return content, style, button_text
+
 
 # Explanation
 code_explanation = """
@@ -117,95 +283,6 @@ In this snippet:
 
 This approach ensures that we evaluate multiple models and select the one with the best performance.
 """
-
-# Initialize Dash App
-app = dash.Dash(__name__)
-server = app.server # Required for Heroku deployment
-
-# Layout
-# Enhanced Layout for Responsiveness
-app.layout = html.Div([
-    html.H1("Calories Burned Prediction Dashboard", style={'text-align': 'center'}),
-
-    # Buttons Container
-    html.Div([
-        html.Button('Show Summary', id='summary-button', n_clicks=0, style={'background-color': '#1E90FF', 'color': 'white', 'border': 'none', 'padding': '10px 20px', 'font-size': '16px', 'cursor': 'pointer', 'margin-right': '10px'}),
-        html.Button('Show Code Snippet', id='code-button', n_clicks=0, style={'background-color': '#1E90FF', 'color': 'white', 'border': 'none', 'padding': '10px 20px', 'font-size': '16px', 'cursor': 'pointer'})
-    ], style={'display': 'flex', 'justify-content': 'center', 'margin-bottom': '20px', 'flex-wrap': 'wrap'}),
-
-    html.Div(id='summary-container', style={'display': 'none', 'border': '1px solid #ddd', 'padding': '20px', 'margin': '20px', 'background-color': '#f9f9f9', 'border-radius': '5px'}),
-    html.Div(id='code-container', style={'display': 'none', 'border': '1px solid #ddd', 'padding': '20px', 'margin': '20px', 'background-color': '#f9f9f9', 'border-radius': '5px'}),
-
-    # Metrics Display
-    html.Div([
-        html.Div([html.H3("Mean Absolute Error"), html.P(f"{best_model_results['MAE']:.2f}")], style={'margin': '20px'}),
-        html.Div([html.H3("R-Squared Score"), html.P(f"{best_model_results['R²']:.2f}")], style={'margin': '20px'}),
-        html.Div([html.H3("Mean Squared Error"), html.P(f"{best_model_results['MSE']:.2f}")], style={'margin': '20px'}),
-        html.Div([html.H3("Root Mean Squared Error"), html.P(f"{best_model_results['RMSE']:.2f}")], style={'margin': '20px'}),
-    ], style={'display': 'flex', 'justify-content': 'center', 'flex-wrap': 'wrap'}),
-
-    # Graphs
-    html.Div([
-        dcc.Graph(id='heatmap', figure=heatmap_fig, style={'display': 'inline-block', 'width': '48%', 'min-width': '300px'}),
-        dcc.Graph(id='age-dist', figure=age_fig, style={'display': 'inline-block', 'width': '48%', 'min-width': '300px'}),
-    ], style={'display': 'flex', 'justify-content': 'center', 'flex-wrap': 'wrap'}),
-
-    html.Div([
-        dcc.Graph(id='height-dist', figure=height_fig, style={'display': 'inline-block', 'width': '48%', 'min-width': '300px'}),
-        dcc.Graph(id='weight-dist', figure=weight_fig, style={'display': 'inline-block', 'width': '48%', 'min-width': '300px'}),
-    ], style={'display': 'flex', 'justify-content': 'center', 'flex-wrap': 'wrap'}),
-
-    # Predictions
-    html.Div([
-        html.H3("Prediction Test Results"),
-        dcc.Graph(
-            id='prediction-scatter',
-            figure=go.Figure(data=[
-                go.Scatter(
-                    x=Y_test,
-                    y=best_model_predictions,
-                    mode='markers',
-                    marker=dict(color='blue', size=5),
-                    name='Predicted vs Actual'
-                )
-            ])
-            .update_layout(title="Predicted vs Actual Calories", xaxis_title="Actual", yaxis_title="Predicted")
-        ),
-    ]),
-])
-
-
-
-# Callback to show/hide summary
-@app.callback(
-    Output('summary-container', 'style'),
-    Output('summary-container', 'children'),
-    Input('summary-button', 'n_clicks'),
-    State('summary-container', 'style')
-)
-def toggle_summary(n_clicks, style):
-    if n_clicks % 2 == 1:
-        return {'display': 'block'}, html.P(project_summary)
-    else:
-        return {'display': 'none'}, ""
-
-# Callback to show/hide code snippet
-@app.callback(
-    Output('code-container', 'style'),
-    Output('code-container', 'children'),
-    Input('code-button', 'n_clicks'),
-    State('code-container', 'style')
-)
-def toggle_code(n_clicks, style):
-    if n_clicks % 2 == 1:
-        return {'display': 'block'}, html.Div([
-            html.H3("Code Snippet"),
-            html.Pre(code_snippet, style={'white-space': 'pre-wrap', 'word-wrap': 'break-word'}),
-            html.H3("Explanation"),
-            html.P(code_explanation)
-        ])
-    else:
-        return {'display': 'none'}, ""
 
 # Run App
 if __name__ == '__main__':
