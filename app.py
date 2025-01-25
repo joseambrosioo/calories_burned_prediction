@@ -123,6 +123,7 @@ app = dash.Dash(__name__)
 server = app.server # Required for Heroku deployment
 
 # Layout
+# Enhanced Layout for Responsiveness
 app.layout = html.Div([
     html.H1("Calories Burned Prediction Dashboard", style={'text-align': 'center'}),
 
@@ -130,7 +131,7 @@ app.layout = html.Div([
     html.Div([
         html.Button('Show Summary', id='summary-button', n_clicks=0, style={'background-color': '#1E90FF', 'color': 'white', 'border': 'none', 'padding': '10px 20px', 'font-size': '16px', 'cursor': 'pointer', 'margin-right': '10px'}),
         html.Button('Show Code Snippet', id='code-button', n_clicks=0, style={'background-color': '#1E90FF', 'color': 'white', 'border': 'none', 'padding': '10px 20px', 'font-size': '16px', 'cursor': 'pointer'})
-    ], style={'display': 'flex', 'justify-content': 'center', 'margin-bottom': '20px'}),
+    ], style={'display': 'flex', 'justify-content': 'center', 'margin-bottom': '20px', 'flex-wrap': 'wrap'}),
 
     html.Div(id='summary-container', style={'display': 'none', 'border': '1px solid #ddd', 'padding': '20px', 'margin': '20px', 'background-color': '#f9f9f9', 'border-radius': '5px'}),
     html.Div(id='code-container', style={'display': 'none', 'border': '1px solid #ddd', 'padding': '20px', 'margin': '20px', 'background-color': '#f9f9f9', 'border-radius': '5px'}),
@@ -141,18 +142,18 @@ app.layout = html.Div([
         html.Div([html.H3("R-Squared Score"), html.P(f"{best_model_results['R²']:.2f}")], style={'margin': '20px'}),
         html.Div([html.H3("Mean Squared Error"), html.P(f"{best_model_results['MSE']:.2f}")], style={'margin': '20px'}),
         html.Div([html.H3("Root Mean Squared Error"), html.P(f"{best_model_results['RMSE']:.2f}")], style={'margin': '20px'}),
-    ], style={'display': 'flex', 'justify-content': 'center'}),
+    ], style={'display': 'flex', 'justify-content': 'center', 'flex-wrap': 'wrap'}),
 
     # Graphs
     html.Div([
-        dcc.Graph(id='heatmap', figure=heatmap_fig, style={'display': 'inline-block', 'width': '48%'}),
-        dcc.Graph(id='age-dist', figure=age_fig, style={'display': 'inline-block', 'width': '48%'}),
-    ]),
+        dcc.Graph(id='heatmap', figure=heatmap_fig, style={'display': 'inline-block', 'width': '48%', 'min-width': '300px'}),
+        dcc.Graph(id='age-dist', figure=age_fig, style={'display': 'inline-block', 'width': '48%', 'min-width': '300px'}),
+    ], style={'display': 'flex', 'justify-content': 'center', 'flex-wrap': 'wrap'}),
 
     html.Div([
-        dcc.Graph(id='height-dist', figure=height_fig, style={'display': 'inline-block', 'width': '48%'}),
-        dcc.Graph(id='weight-dist', figure=weight_fig, style={'display': 'inline-block', 'width': '48%'}),
-    ]),
+        dcc.Graph(id='height-dist', figure=height_fig, style={'display': 'inline-block', 'width': '48%', 'min-width': '300px'}),
+        dcc.Graph(id='weight-dist', figure=weight_fig, style={'display': 'inline-block', 'width': '48%', 'min-width': '300px'}),
+    ], style={'display': 'flex', 'justify-content': 'center', 'flex-wrap': 'wrap'}),
 
     # Predictions
     html.Div([
@@ -172,6 +173,7 @@ app.layout = html.Div([
         ),
     ]),
 ])
+
 
 
 # Callback to show/hide summary
