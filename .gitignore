@@ -4,3 +4,5 @@ venv
 .env
 
 .slugignore
+
+playground.py

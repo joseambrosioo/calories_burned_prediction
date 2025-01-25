@@ -14,9 +14,13 @@ from sklearn.svm import SVR
 from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import mean_absolute_error, r2_score, mean_squared_error
 
+# Constants
+CALORIES_URL = 'https://ambrosiopublicfiles.s3.us-east-2.amazonaws.com/calories.csv'
+EXERCISE_URL = 'https://ambrosiopublicfiles.s3.us-east-2.amazonaws.com/exercise.csv'
+
 # Load data
-calories = pd.read_csv('https://ambrosiopublicfiles.s3.us-east-2.amazonaws.com/calories.csv')
-exercise_data = pd.read_csv('https://ambrosiopublicfiles.s3.us-east-2.amazonaws.com/exercise.csv')
+calories = pd.read_csv(CALORIES_URL)
+exercise_data = pd.read_csv(EXERCISE_URL)
 calories_data = pd.concat([exercise_data, calories['Calories']], axis=1)
 
 # Preprocessing
@@ -105,7 +109,7 @@ app.layout = dbc.Container(
                               "View/Hide Summary",
                               id="summary-button",
                               className="btn",
-                              style={'backgroundColor': '#1E90FF', 'color': 'white', 'border': 'none', 'padding': '10px 20px', 'fontSize': '16px', 'cursor': 'pointer', 'margin-right': '10px'}
+                              style={'backgroundColor': '#1E90FF', 'color': 'white', 'border': 'none', 'padding': '10px 20px', 'fontSize': '16px', 'cursor': 'pointer', 'marginRight': '10px'}
                          ),
                          
                          dbc.Button(
@@ -192,7 +196,7 @@ app.layout = dbc.Container(
                               " and connect with me on ",
                               html.A("LinkedIn", href="https://www.linkedin.com/in/jose-ambrosio/", target="_blank"),
                               "."
-                         ], style={'textAlign': 'center', 'padding': '10px', 'background-color': '#f9f9f9', 'borderTop': '1px solid #ddd'})
+                         ], style={'textAlign': 'center', 'padding': '10px', 'backgroundColor': '#f9f9f9', 'borderTop': '1px solid #ddd'})
                     ])        
                ])   
           ])
@@ -211,7 +215,7 @@ def update_summary(n_clicks, button_text):
     if button_text == "View/Hide Summary":
         style = {"display": "block"}
         button_text = "Hide Summary"
-        content = html.Div(dcc.Markdown(project_summary, style={"white-space": "pre-wrap", "word-wrap": "break-word"}))
+        content = html.Div(dcc.Markdown(project_summary, style={"whiteSpace": "pre-wrap", "wordWrap": "break-word"}))
     else:
         style = {"display": "none"}
         button_text = "View/Hide Summary"
@@ -265,7 +269,7 @@ for name, model in models.items():
 best_model = min(results, key=lambda k: results[k]['MAE'])
 best_model_results = results[best_model]
 best_model_predictions = models[best_model].predict(X_test)
-```""", style={"white-space": "pre-wrap", "word-wrap": "break-word"}), html.H3("Explanation"), html.P(code_explanation)])
+```""", style={"whiteSpace": "preWrap", "wordWrap": "breakWord"}), html.H3("Explanation"), html.P(code_explanation)])
     else:
         style = {"display": "none"}
         button_text = "View/Hide Code Snippet"
