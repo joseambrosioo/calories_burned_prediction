@@ -1,45 +1,116 @@
-# Calories Burned Prediction Model
+# Calories Burned Prediction Model 
 
-This project focuses on predicting calories burned during physical activities using advanced machine learning techniques. The model achieved outstanding performance, surpassing benchmark standards, with the following metrics:
+## Project Overview  
+This project focuses on predicting **calories burned** during physical activities using **advanced machine learning techniques**. The goal is to develop an **accurate** and **efficient** predictive model that provides insights into **energy expenditure** based on key physiological factors.  
 
-- **Mean Absolute Error (MAE):** 1.003  
-- **R-Squared Score (R²):** 0.999  
-- **Mean Squared Error (MSE):** 2.035  
-- **Root Mean Squared Error (RMSE):** 1.426  
+The model **outperformed benchmark standards** with the following performance metrics:  
 
-## Dataset and Features
-- **Records:** 15,000 entries  
-- **Features:** Activity duration, heart rate, body temperature  
-- **Exploratory Data Analysis (EDA):**  
-  Uncovered patterns, trends, and outliers through:  
-  - Visualizations  
-  - Descriptive statistics  
-  - Correlation analysis  
+### Model Performance Metrics  
+- **Mean Absolute Error (MAE)**: 1.003  
+- **R-Squared Score (R²)**: 0.999  
+- **Mean Squared Error (MSE)**: 2.035  
+- **Root Mean Squared Error (RMSE)**: 1.426  
 
-## Model Development
-Implemented and evaluated multiple regression models to identify the optimal solution:
+## Applications  
+This predictive model has a wide range of real-world applications, including:  
 
-- **Algorithms Used:**
-  - Light Gradient Boosting Machine (LightGBM)
-  - Extreme Gradient Boosting (XGBoost)
-  - Extra Trees
-  - Multi-layer Perceptron (MLP)   
-  - Random Forest     
-  - Gradient Boosting
-  - Decision Tree
-  - K-Nearest Neighbors (KNN)
-  - Bayesian Ridge
-  - Ridge
-  - Linear
-  - Huber
-  - Lasso
-  - ElasticNet
-  - Support Vector Machine (SVM)
+✅ **Fitness & Health Tracking** – Personalized fitness recommendations based on calorie expenditure.  
+✅ **Smart Wearables** – Integration with smartwatches and fitness bands for real-time calorie estimation.  
+✅ **Sports Performance Analysis** – Helps athletes optimize training by understanding energy expenditure.  
+✅ **Healthcare & Nutrition** – Assists dietitians and doctors in designing calorie-controlled diets.  
 
-## Results
-The project demonstrates how machine learning can effectively predict calories burned, delivering highly accurate results and valuable insights into activity-based calorie consumption.
+## Dataset and Features  
+The dataset contains comprehensive physiological data, enabling precise calorie burn predictions.  
 
-![00](https://github.com/user-attachments/assets/5dab7319-9439-4194-a6d2-20ee5ccdec66)
+- **Total Records**: 15,000 entries  
+- **Key Features**:  
+  - **Activity Duration**  
+  - **Heart Rate**  
+  - **Body Temperature**  
+  - **Age**  
+  - **Height**  
+  - **Weight**  
+
+### Sample of the Dataset  
+
+![02](https://github.com/user-attachments/assets/a2f2bdac-83f5-4d78-9f83-c217e54ca077)
+
+*Sample of the Dataset* 
+
+## Exploratory Data Analysis (EDA)  
+Conducted **EDA** to uncover patterns, trends, and outliers using:  
+
+- **Visualizations**  
+- **Descriptive Statistics**  
+- **Correlation Analysis** 
+
+### Data Analysis Summary  
+![03](https://github.com/user-attachments/assets/c7e4224c-8786-47ec-9f14-4b83b4424f27)
+
+*Data Analysis* 
+
+### Age Distribution  
+![04](https://github.com/user-attachments/assets/0ff7f8e9-4fa4-49ac-8f8c-9f134248e594)
+
+*Age Analysis* 
+
+### Height Distribution  
+![05](https://github.com/user-attachments/assets/3daa10bd-32e0-45ac-98c2-30118eec729d)
+
+*Height Analysis* 
+
+### Weight Distribution  
+![06](https://github.com/user-attachments/assets/6890994a-ba03-4da9-ae7d-c12070ca380f)
+
+*Weight Analysis* 
+
+### Correlation Heatmap  
+![Heatmap](https://github.com/user-attachments/assets/heatmap.jpg)  
+
+*Correlation Heatmap* 
+
+## Methodology  
+This project followed a structured machine learning pipeline to achieve optimal performance:  
+
+### **Data Preprocessing**  
+- **Data Cleaning**: Removed missing values and outliers.  
+- **Feature Engineering**: Created meaningful features for better prediction.  
+- **Normalization**: Standardized features to improve model performance.  
+
+### **Model Selection & Training**  
+Evaluated multiple regression algorithms to identify the best-performing model.  
+
+### Machine Learning Techniques Used  
+- **Light Gradient Boosting Machine (LightGBM)**  
+- **Extreme Gradient Boosting (XGBoost)**  
+- **Extra Trees**  
+- **Multi-layer Perceptron (MLP)**  
+- **Random Forest**  
+- **Gradient Boosting**  
+- **Decision Tree**  
+- **K-Nearest Neighbors (KNN)**  
+- **Bayesian Ridge**  
+- **Ridge Regression**  
+- **Linear Regression**  
+- **Huber Regression**  
+- **Lasso Regression**  
+- **ElasticNet**  
+- **Support Vector Machine (SVM)**  
+
+### Model Training Code Snippet  
+```python
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+
+# Splitting dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Initializing and training the model
+model = RandomForestRegressor(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# Predicting and evaluating the model
+predictions = model.predict(X_test)
 
 ![01](https://github.com/user-attachments/assets/3742df7e-1995-4f0b-a055-aed646168d04)
 
