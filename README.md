@@ -33,7 +33,7 @@ The dataset contains comprehensive physiological data, enabling precise calorie 
 
 ### Sample of the Dataset  
 
-![02](https://github.com/user-attachments/assets/a2f2bdac-83f5-4d78-9f83-c217e54ca077)
+![01](https://github.com/user-attachments/assets/3742df7e-1995-4f0b-a055-aed646168d04)
 
 *Sample of the Dataset* 
 
@@ -45,27 +45,28 @@ Conducted **EDA** to uncover patterns, trends, and outliers using:
 - **Correlation Analysis** 
 
 ### Data Analysis Summary  
-![03](https://github.com/user-attachments/assets/c7e4224c-8786-47ec-9f14-4b83b4424f27)
+
+![02](https://github.com/user-attachments/assets/a2f2bdac-83f5-4d78-9f83-c217e54ca077)
 
 *Data Analysis* 
 
 ### Age Distribution  
-![04](https://github.com/user-attachments/assets/0ff7f8e9-4fa4-49ac-8f8c-9f134248e594)
+![03](https://github.com/user-attachments/assets/c7e4224c-8786-47ec-9f14-4b83b4424f27)
 
 *Age Analysis* 
 
 ### Height Distribution  
-![05](https://github.com/user-attachments/assets/3daa10bd-32e0-45ac-98c2-30118eec729d)
+![04](https://github.com/user-attachments/assets/0ff7f8e9-4fa4-49ac-8f8c-9f134248e594)
 
 *Height Analysis* 
 
 ### Weight Distribution  
-![06](https://github.com/user-attachments/assets/6890994a-ba03-4da9-ae7d-c12070ca380f)
+![05](https://github.com/user-attachments/assets/3daa10bd-32e0-45ac-98c2-30118eec729d)
 
 *Weight Analysis* 
 
 ### Correlation Heatmap  
-![Heatmap](https://github.com/user-attachments/assets/heatmap.jpg)  
+![06](https://github.com/user-attachments/assets/6890994a-ba03-4da9-ae7d-c12070ca380f)
 
 *Correlation Heatmap* 
 
@@ -97,41 +98,43 @@ Evaluated multiple regression algorithms to identify the best-performing model.
 - **ElasticNet**  
 - **Support Vector Machine (SVM)**  
 
-### Model Training Code Snippet  
-```python
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import train_test_split
+## Performance Comparison of All Techniques
+The following graphs compare the Mean Absolute Error (MAE), R-Squared (R²), Mean Squared Error (MSE), and Root Mean Squared Error (RMSE) for all models.
 
-# Splitting dataset into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Initializing and training the model
-model = RandomForestRegressor(n_estimators=100, random_state=42)
-model.fit(X_train, y_train)
-
-# Predicting and evaluating the model
-predictions = model.predict(X_test)
-
-![01](https://github.com/user-attachments/assets/3742df7e-1995-4f0b-a055-aed646168d04)
-
-![02](https://github.com/user-attachments/assets/a2f2bdac-83f5-4d78-9f83-c217e54ca077)
-
-![03](https://github.com/user-attachments/assets/c7e4224c-8786-47ec-9f14-4b83b4424f27)
-
-![04](https://github.com/user-attachments/assets/0ff7f8e9-4fa4-49ac-8f8c-9f134248e594)
-
-![05](https://github.com/user-attachments/assets/3daa10bd-32e0-45ac-98c2-30118eec729d)
-
-![06](https://github.com/user-attachments/assets/6890994a-ba03-4da9-ae7d-c12070ca380f)
-
+### Mean Absolute Error (MAE) Comparison
 ![07 1](https://github.com/user-attachments/assets/a798c74e-77cb-44ea-bf7e-a98b38520b2f)
 
+### R-Squared (R²) Comparison
 ![07 2](https://github.com/user-attachments/assets/4b18303a-11c2-4653-8407-936e94ad2c3d)
 
+### Mean Squared Error (MSE) Comparison
 ![07 3](https://github.com/user-attachments/assets/8bf805f5-e47c-4375-a748-507188a20012)
 
+### Root Mean Squared Error (RMSE) Comparison
 ![07 4](https://github.com/user-attachments/assets/e7d3ca7f-218c-497f-b55a-55c49e581a6f)
 
+## Code Snippets
+Below are key sections of the code used in this project:
+
+1. **LGBMRegressor Model Training**:
 ![08](https://github.com/user-attachments/assets/806da799-2d8a-4920-932d-799276a43db6)
 
+2. **Plotting Graphs**:
 ![09](https://github.com/user-attachments/assets/50fc8001-7c9f-41ed-8dce-8d95c28b6b24)
+
+## Conclusion
+This project demonstrates how machine learning can effectively predict calories burned, delivering highly accurate results and valuable insights into activity-based calorie consumption.
+
+## Key Takeaways:
+Achieved state-of-the-art accuracy with an R² score of 0.999.
+Identified critical features like heart rate and activity duration for precise predictions.
+Explored multiple ML techniques to determine the optimal model.
+Developed insights for practical applications in health, fitness, and sports.
+
+## Future Improvements
+Enhance the dataset with additional physiological factors.
+Optimize hyperparameters for even greater accuracy.
+Deploy the model as an API or web application.
+
+## Explore the Repository
+Explore the repository to learn more about the methodology, code, and results. Contributions and feedback are welcome!
