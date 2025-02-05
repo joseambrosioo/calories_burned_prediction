@@ -104,14 +104,22 @@ The following graphs compare the Mean Absolute Error (MAE), R-Squared (R²), Mea
 ### Mean Absolute Error (MAE) Comparison
 ![07 1](https://github.com/user-attachments/assets/a798c74e-77cb-44ea-bf7e-a98b38520b2f)
 
+*MAE Comparison* 
+
 ### R-Squared (R²) Comparison
 ![07 2](https://github.com/user-attachments/assets/4b18303a-11c2-4653-8407-936e94ad2c3d)
+
+*R² Comparison* 
 
 ### Mean Squared Error (MSE) Comparison
 ![07 3](https://github.com/user-attachments/assets/8bf805f5-e47c-4375-a748-507188a20012)
 
+*MSE Comparison* 
+
 ### Root Mean Squared Error (RMSE) Comparison
 ![07 4](https://github.com/user-attachments/assets/e7d3ca7f-218c-497f-b55a-55c49e581a6f)
+
+*RMSE Comparison* 
 
 ## Code Snippets
 Below are key sections of the code used in this project:
