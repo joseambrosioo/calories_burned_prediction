@@ -134,7 +134,7 @@ Below are key sections of the code used in this project:
 This project demonstrates how machine learning can effectively predict calories burned, delivering highly accurate results and valuable insights into activity-based calorie consumption.
 
 ### Key Takeaways  
-- **Achieved state-of-the-art accuracy** with an **R² score of 0.999**.  
+- **Achieved state-of-the-art accuracy** with an **MAE score of 1.003**.  
 - **Identified critical features** like heart rate and activity duration for precise predictions.  
 - **Explored multiple ML techniques** to determine the optimal model.  
 - **Developed insights for practical applications** in health, fitness, and sports.  
