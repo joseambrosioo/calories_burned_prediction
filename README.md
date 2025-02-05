@@ -5,7 +5,7 @@ This project focuses on predicting **calories burned** during physical activitie
 
 The model **outperformed benchmark standards** with the following performance metrics:  
 
-### Model Performance Metrics  
+### Best Model Performance Metrics  
 - **Mean Absolute Error (MAE)**: 1.003  
 - **R-Squared Score (R²)**: 0.999  
 - **Mean Squared Error (MSE)**: 2.035  
@@ -133,16 +133,16 @@ Below are key sections of the code used in this project:
 ## Conclusion
 This project demonstrates how machine learning can effectively predict calories burned, delivering highly accurate results and valuable insights into activity-based calorie consumption.
 
-## Key Takeaways:
-Achieved state-of-the-art accuracy with an R² score of 0.999.
-Identified critical features like heart rate and activity duration for precise predictions.
-Explored multiple ML techniques to determine the optimal model.
-Developed insights for practical applications in health, fitness, and sports.
+**Key Takeaways**:  
+**Achieved state-of-the-art accuracy** with an **R² score of 0.999**.  
+**Identified critical features** like heart rate and activity duration for precise predictions.  
+**Explored multiple ML techniques** to determine the optimal model.  
+**Developed insights for practical applications** in health, fitness, and sports.  
 
-## Future Improvements
-Enhance the dataset with additional physiological factors.
-Optimize hyperparameters for even greater accuracy.
-Deploy the model as an API or web application.
+### Future Improvements  
+- Enhance the dataset with **additional physiological factors**.  
+- Optimize **hyperparameters** for even greater accuracy.  
+- Deploy the model as an **API or web application**.  
 
 ## Explore the Repository
 Explore the repository to learn more about the methodology, code, and results. Contributions and feedback are welcome!
