@@ -14,10 +14,10 @@ The model **outperformed benchmark standards** with the following performance me
 ## Applications  
 This predictive model has a wide range of real-world applications, including:  
 
-✅ **Fitness & Health Tracking** – Personalized fitness recommendations based on calorie expenditure.  
-✅ **Smart Wearables** – Integration with smartwatches and fitness bands for real-time calorie estimation.  
-✅ **Sports Performance Analysis** – Helps athletes optimize training by understanding energy expenditure.  
-✅ **Healthcare & Nutrition** – Assists dietitians and doctors in designing calorie-controlled diets.  
+- **Fitness & Health Tracking** – Personalized fitness recommendations based on calorie expenditure.  
+- **Smart Wearables** – Integration with smartwatches and fitness bands for real-time calorie estimation.  
+- **Sports Performance Analysis** – Helps athletes optimize training by understanding energy expenditure.  
+- **Healthcare & Nutrition** – Assists dietitians and doctors in designing calorie-controlled diets.  
 
 ## Dataset and Features  
 The dataset contains comprehensive physiological data, enabling precise calorie burn predictions.  
