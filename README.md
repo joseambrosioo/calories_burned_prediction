@@ -19,7 +19,10 @@ This predictive model has a wide range of real-world applications, including:
 - **Sports Performance Analysis** – Helps athletes optimize training by understanding energy expenditure.  
 - **Healthcare & Nutrition** – Assists dietitians and doctors in designing calorie-controlled diets.  
 
-## Dataset and Features  
+## Methodology  
+This project followed a structured machine learning pipeline to achieve optimal performance:  
+
+### Sample and Features  
 The sample contains comprehensive physiological data, enabling precise calorie burn predictions.  
 
 - **Total Records**: 15,000 entries  
@@ -31,7 +34,7 @@ The sample contains comprehensive physiological data, enabling precise calorie b
   - **Height**  
   - **Weight**  
 
-## Exploratory Data Analysis (EDA)  
+### Exploratory Data Analysis (EDA)  
 Conducted **EDA** to uncover patterns, trends, and outliers using:  
 
 - **Visualizations**  
@@ -42,30 +45,27 @@ Conducted **EDA** to uncover patterns, trends, and outliers using:
 
 ![02](https://github.com/user-attachments/assets/a2f2bdac-83f5-4d78-9f83-c217e54ca077)
 
-*Data Analysis* 
+*Figure 1. Data Analysis* 
 
 ### Age Distribution  
 ![03](https://github.com/user-attachments/assets/c7e4224c-8786-47ec-9f14-4b83b4424f27)
 
-*Age Analysis* 
+*Figure 2. Age Analysis* 
 
 ### Height Distribution  
 ![04](https://github.com/user-attachments/assets/0ff7f8e9-4fa4-49ac-8f8c-9f134248e594)
 
-*Height Analysis* 
+*Figure 3. Height Analysis* 
 
 ### Weight Distribution  
 ![05](https://github.com/user-attachments/assets/3daa10bd-32e0-45ac-98c2-30118eec729d)
 
-*Weight Analysis* 
+*Figure 4. Weight Analysis* 
 
 ### Correlation Heatmap  
 ![06](https://github.com/user-attachments/assets/6890994a-ba03-4da9-ae7d-c12070ca380f)
 
-*Correlation Heatmap* 
-
-## Methodology  
-This project followed a structured machine learning pipeline to achieve optimal performance:  
+*Figure 5. Correlation Heatmap* 
 
 ### **Data Preprocessing**  
 - **Data Cleaning**: Removed missing values and outliers.  
@@ -98,22 +98,22 @@ The following graphs compare the Mean Absolute Error (MAE), R-Squared (R²), Mea
 ### Mean Absolute Error (MAE) Comparison
 ![07 1](https://github.com/user-attachments/assets/a798c74e-77cb-44ea-bf7e-a98b38520b2f)
 
-*MAE Comparison* 
+*Figure 6. MAE Comparison* 
 
 ### R-Squared (R²) Comparison
 ![07 2](https://github.com/user-attachments/assets/4b18303a-11c2-4653-8407-936e94ad2c3d)
 
-*R² Comparison* 
+*Figure 7. R² Comparison* 
 
 ### Mean Squared Error (MSE) Comparison
 ![07 3](https://github.com/user-attachments/assets/8bf805f5-e47c-4375-a748-507188a20012)
 
-*MSE Comparison* 
+*Figure 8. MSE Comparison* 
 
 ### Root Mean Squared Error (RMSE) Comparison
 ![07 4](https://github.com/user-attachments/assets/e7d3ca7f-218c-497f-b55a-55c49e581a6f)
 
-*RMSE Comparison* 
+*Figure 9. RMSE Comparison* 
 
 ## Conclusion
 This project demonstrates how machine learning can effectively predict calories burned, delivering highly accurate results and valuable insights into activity-based calorie consumption.
@@ -135,8 +135,12 @@ Below are key sections of the code used in this project:
 1. **LGBMRegressor Model Training**:
 ![08](https://github.com/user-attachments/assets/806da799-2d8a-4920-932d-799276a43db6)
 
-2. **Plotting Graphs**:
+*Figure 10. LGBMRegressor Model Training Code Snippet* 
+
+3. **Graphs Plotting**:
 ![09](https://github.com/user-attachments/assets/50fc8001-7c9f-41ed-8dce-8d95c28b6b24)
+
+*Figure 11. Graphs Plotting Code Snippet* 
 
 ## Explore the Repository
 Explore the repository to learn more about the methodology, code, and results. Contributions and feedback are welcome!
