@@ -137,7 +137,7 @@ Below are key sections of the code used in this project:
 
 *Figure 10. LGBMRegressor Model Training Code Snippet* 
 
-2. **Graphs Plotting**:
+2. **Graphs Plotting**:   
 ![09](https://github.com/user-attachments/assets/50fc8001-7c9f-41ed-8dce-8d95c28b6b24)
 
 *Figure 11. Graphs Plotting Code Snippet* 
