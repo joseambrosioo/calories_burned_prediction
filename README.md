@@ -121,15 +121,6 @@ The following graphs compare the Mean Absolute Error (MAE), R-Squared (R²), Mea
 
 *RMSE Comparison* 
 
-## Code Snippets
-Below are key sections of the code used in this project:
-
-1. **LGBMRegressor Model Training**:
-![08](https://github.com/user-attachments/assets/806da799-2d8a-4920-932d-799276a43db6)
-
-2. **Plotting Graphs**:
-![09](https://github.com/user-attachments/assets/50fc8001-7c9f-41ed-8dce-8d95c28b6b24)
-
 ## Conclusion
 This project demonstrates how machine learning can effectively predict calories burned, delivering highly accurate results and valuable insights into activity-based calorie consumption.
 
@@ -143,6 +134,15 @@ This project demonstrates how machine learning can effectively predict calories 
 - Enhance the dataset with **additional physiological factors**.  
 - Optimize **hyperparameters** for even greater accuracy.  
 - Deploy the model as an **API or web application**.  
+
+## Code Snippets
+Below are key sections of the code used in this project:
+
+1. **LGBMRegressor Model Training**:
+![08](https://github.com/user-attachments/assets/806da799-2d8a-4920-932d-799276a43db6)
+
+2. **Plotting Graphs**:
+![09](https://github.com/user-attachments/assets/50fc8001-7c9f-41ed-8dce-8d95c28b6b24)
 
 ## Explore the Repository
 Explore the repository to learn more about the methodology, code, and results. Contributions and feedback are welcome!
