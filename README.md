@@ -20,7 +20,7 @@ This predictive model has a wide range of real-world applications, including:
 - **Healthcare & Nutrition** – Assists dietitians and doctors in designing calorie-controlled diets.  
 
 ## Dataset and Features  
-The dataset contains comprehensive physiological data, enabling precise calorie burn predictions.  
+The sample contains comprehensive physiological data, enabling precise calorie burn predictions.  
 
 - **Total Records**: 15,000 entries  
 - **Key Features**:  
@@ -30,12 +30,6 @@ The dataset contains comprehensive physiological data, enabling precise calorie 
   - **Age**  
   - **Height**  
   - **Weight**  
-
-### Sample of the Dataset  
-
-![01](https://github.com/user-attachments/assets/3742df7e-1995-4f0b-a055-aed646168d04)
-
-*Sample of the Dataset* 
 
 ## Exploratory Data Analysis (EDA)  
 Conducted **EDA** to uncover patterns, trends, and outliers using:  
